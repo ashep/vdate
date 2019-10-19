@@ -35,7 +35,9 @@ setup(
     install_requires=[
         'babel==2.*',
     ],
-    setup_requires=[],
+    setup_requires=[
+        'babel==2.*',
+    ],
     tests_require=[],
     classifiers=[
         'Development Status :: 4 - Beta',
