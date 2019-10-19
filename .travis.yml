@@ -3,7 +3,7 @@ language: python
 python:
   - "3.7"
 install:
-  - pip install tox-travis codecov
+  - pip install babel==2.* tox-travis codecov
 script:
   - tox
 after_success:
