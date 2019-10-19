@@ -49,7 +49,7 @@ class BaseRule(ABC):
     def validate(self) -> Any:
         """Validate the rule
         """
-        pass
+        raise NotImplementedError()
 
 
 class PassRule(BaseRule):

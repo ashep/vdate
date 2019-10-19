@@ -5,6 +5,7 @@ __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
 
 import pytest
+import random
 from vdate.rule.base import BaseRule, PassRule, EmptyRule, NonEmptyRule
 from vdate.rule.error import EmptyRuleError, NonEmptyRuleError
 
@@ -13,6 +14,17 @@ class TestRule:
     def test_base(self):
         with pytest.raises(TypeError):
             BaseRule()
+
+    def test_value(self):
+        r = PassRule()
+
+        v = random.random()
+        r.set_value(v)
+        assert r.get_value() == r.value == v
+
+        v = random.random()
+        r.value = v
+        assert r.get_value() == r.value == v
 
     def test_pass(self):
         PassRule().validate()
