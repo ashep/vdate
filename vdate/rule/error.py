@@ -21,3 +21,8 @@ class NonEmptyRuleError(RuleError):
     """Non empty rule error
     """
     pass
+
+
+class LengthRuleError(RuleError):
+    """Length rule error
+    """

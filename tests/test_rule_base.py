@@ -1,16 +1,19 @@
-"""VDate rules tests
+"""Base rules tests
 """
 __author__ = 'Oleksandr Shepetko'
 __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
 
 import pytest
-import random
 from vdate.rule.base import BaseRule, PassRule, EmptyRule, NonEmptyRule
 from vdate.rule.error import EmptyRuleError, NonEmptyRuleError
+from .base import BaseTest
 
 
-class TestRule:
+class TestRuleBase(BaseTest):
+    """Base VDate rules tests
+    """
+
     def test_base(self):
         with pytest.raises(TypeError):
             BaseRule()
@@ -18,11 +21,11 @@ class TestRule:
     def test_value(self):
         r = PassRule()
 
-        v = random.random()
+        v = self.rand_str()
         r.set_value(v)
         assert r.get_value() == r.value == v
 
-        v = random.random()
+        v = self.rand_str()
         r.value = v
         assert r.get_value() == r.value == v
 
