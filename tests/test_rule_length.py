@@ -1,12 +1,12 @@
-"""Length rules tests
+"""Length Rules Tests
 """
 __author__ = 'Oleksandr Shepetko'
 __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
 
 import pytest
+from vdate.rule.error import TooShortError, TooLongError
 from vdate.rule.length import LengthRule, MinLengthRule, MaxLengthRule
-from vdate.rule.error import LengthRuleError
 from .base import BaseTest
 
 
@@ -27,19 +27,19 @@ class TestRuleLength(BaseTest):
         length_rule = LengthRule(min_len, max_len)
         assert length_rule.set_value(min_list).validate() is None
         assert length_rule.set_value(max_list).validate() is None
-        with pytest.raises(LengthRuleError):
+        with pytest.raises(TooShortError):
             assert length_rule.set_value(min_list[:-1]).validate() is None
-        with pytest.raises(LengthRuleError):
+        with pytest.raises(TooLongError):
             length_rule.set_value(max_list + [self.rand_int()]).validate()
 
         # Testing MinLengthRule
         min_length_rule = MinLengthRule(min_len)
         assert min_length_rule.set_value(min_list).validate() is None
-        with pytest.raises(LengthRuleError):
+        with pytest.raises(TooShortError):
             min_length_rule.set_value(min_list[:-1]).validate()
 
         # Testing MaxLengthRule
         max_length_rule = MaxLengthRule(max_len)
         assert max_length_rule.set_value(max_list).validate() is None
-        with pytest.raises(LengthRuleError):
+        with pytest.raises(TooLongError):
             max_length_rule.set_value(max_list + [self.rand_int()]).validate()

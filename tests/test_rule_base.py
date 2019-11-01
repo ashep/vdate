@@ -1,12 +1,12 @@
-"""Base rules tests
+"""Base Rules Tests
 """
 __author__ = 'Oleksandr Shepetko'
 __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
 
 import pytest
-from vdate.rule.base import BaseRule, PassRule, EmptyRule, NonEmptyRule
-from vdate.rule.error import EmptyRuleError, NonEmptyRuleError
+from vdate.rule.base import Rule, PassRule, IsEmptyRule, IsNonEmptyRule
+from vdate.rule.base import IsEmptyError, IsNotEmptyError
 from .base import BaseTest
 
 
@@ -16,7 +16,7 @@ class TestRuleBase(BaseTest):
 
     def test_base(self):
         with pytest.raises(TypeError):
-            BaseRule()
+            Rule()
 
     def test_value(self):
         r = PassRule()
@@ -33,21 +33,21 @@ class TestRuleBase(BaseTest):
         PassRule().validate()
 
     def test_empty(self):
-        r = EmptyRule()
+        r = IsEmptyRule()
 
         for v in (None, '', [], {}, set(), tuple()):
             r.set_value(v).validate()
 
         for v in (0, 0.0, False):
-            with pytest.raises(EmptyRuleError):
+            with pytest.raises(IsEmptyError):
                 r.set_value(v).validate()
 
     def test_non_empty(self):
-        r = NonEmptyRule()
+        r = IsNonEmptyRule()
 
         for v in (0, 0.0, False):
             r.set_value(v).validate()
 
         for v in (None, '', [], {}, set(), tuple()):
-            with pytest.raises(NonEmptyRuleError):
+            with pytest.raises(IsNotEmptyError):
                 r.set_value(v).validate()

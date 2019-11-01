@@ -1,4 +1,4 @@
-"""VDate base rules
+"""VDate Base Rules
 """
 __author__ = 'Oleksandr Shepetko'
 __email__ = 'a@shepetko.com'
@@ -7,12 +7,12 @@ __license__ = 'MIT'
 from typing import Any
 from abc import ABC, abstractmethod
 from .._gettext import _
-from .error import EmptyRuleError, NonEmptyRuleError
+from .error import IsEmptyError, IsNotEmptyError
 
 _EMPTY_OBJECTS = (None, '', [], {}, set(), tuple())
 
 
-class BaseRule(ABC):
+class Rule(ABC):
     """Base rule
     """
 
@@ -52,7 +52,7 @@ class BaseRule(ABC):
         raise NotImplementedError()
 
 
-class PassRule(BaseRule):
+class PassRule(Rule):
     """Pass rule
     """
 
@@ -62,7 +62,7 @@ class PassRule(BaseRule):
         pass
 
 
-class EmptyRule(BaseRule):
+class IsEmptyRule(Rule):
     """Empty rule
     """
 
@@ -70,10 +70,10 @@ class EmptyRule(BaseRule):
         """Validate the rule
         """
         if self._value not in _EMPTY_OBJECTS:
-            raise EmptyRuleError(_('Must be empty'))
+            raise IsEmptyError(_('Must be empty'), self._value)
 
 
-class NonEmptyRule(BaseRule):
+class IsNonEmptyRule(Rule):
     """Not empty rule
     """
 
@@ -81,4 +81,4 @@ class NonEmptyRule(BaseRule):
         """Validate the rule
         """
         if self._value in _EMPTY_OBJECTS:
-            raise NonEmptyRuleError(_('Cannot be empty'))
+            raise IsNotEmptyError(_('Cannot be empty'), self._value)
