@@ -67,13 +67,23 @@ class IsNotDecimalError(NumberRuleError):
     """
 
 
-class TooSmallError(NumberRuleError):
+class TooSmallError(RuleError):
     """Too small number error
     """
 
 
-class TooBigError(NumberRuleError):
+class TooBigError(RuleError):
     """Too big number error
+    """
+
+
+class EqualsError(RuleError):
+    """Equals error
+    """
+
+
+class NotEqualsError(RuleError):
+    """Not equals error
     """
 
 
