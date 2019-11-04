@@ -1,4 +1,4 @@
-"""VDate gettext helper
+"""Vdate gettext helper
 """
 __author__ = 'Oleksandr Shepetko'
 __email__ = 'a@shepetko.com'

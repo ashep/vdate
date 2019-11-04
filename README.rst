@@ -1,7 +1,7 @@
-VDate
+Vdate
 =====
 
-VDate is a validation library for Python.
+Vdate is a validation library for Python.
 
 
 Writing translations

@@ -1,4 +1,4 @@
-"""VDate Number Rules
+"""Vdate Number Rules
 """
 __author__ = 'Oleksandr Shepetko'
 __email__ = 'a@shepetko.com'

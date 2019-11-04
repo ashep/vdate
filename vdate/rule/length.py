@@ -1,4 +1,4 @@
-"""VDate Length Rules
+"""Vdate Length Rules
 """
 __author__ = 'Oleksandr Shepetko'
 __email__ = 'a@shepetko.com'
