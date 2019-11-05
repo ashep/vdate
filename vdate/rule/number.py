@@ -5,14 +5,15 @@ __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
 
 from typing import Union, SupportsInt, SupportsFloat
-from .error import IsNotNumberError, IsNotIntegerError, IsNotDecimalError
+from decimal import Decimal
+from .error import IsNotNumberError, IsNotIntegerError, IsNotFloatError
 from .._gettext import _
 from .base import Rule
 
 NumberType = Union[SupportsInt, SupportsFloat]
 
 
-class IsNumberRule(Rule):
+class IsNumber(Rule):
     """Number validation rule
     """
 
@@ -23,8 +24,8 @@ class IsNumberRule(Rule):
             raise IsNotNumberError(_('Is not a number'), self._value)
 
 
-class IsIntegerRule(IsNumberRule):
-    """Integer Validation Rule.
+class IsInteger(IsNumber):
+    """Integer validation rule
     """
 
     def validate(self):
@@ -34,12 +35,23 @@ class IsIntegerRule(IsNumberRule):
             raise IsNotIntegerError(_('Is not an integer number'))
 
 
-class IsDecimalRule(IsNumberRule):
-    """Float Validation Rule.
+class IsFloat(IsNumber):
+    """Float validation rule
     """
 
     def validate(self):
         """Validate the rule
         """
         if not hasattr(self._value, '__float__'):
-            raise IsNotDecimalError(_('Is not an float number'))
+            raise IsNotFloatError(_('Is not a float number'))
+
+
+class IsDecimal(IsNumber):
+    """Decimal validation rule
+    """
+
+    def validate(self):
+        """Validate the rule
+        """
+        if not isinstance(self._value, Decimal):
+            raise IsNotFloatError(_('Is not a decimal number'))

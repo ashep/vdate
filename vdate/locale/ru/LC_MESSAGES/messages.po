@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  vdate-0.0.1\n"
 "Report-Msgid-Bugs-To: a@shepetko.com\n"
-"POT-Creation-Date: 2019-10-18 00:18+0300\n"
+"POT-Creation-Date: 2019-11-05 23:10+0200\n"
 "PO-Revision-Date: 2019-10-18 00:49+0300\n"
 "Last-Translator: Oleksandr Shepetko <a@shepetko.com>\n"
 "Language: ru\n"
@@ -19,19 +19,51 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.7.0\n"
 
-#: vdate/rule/_base.py:71
+#: vdate/rule/base.py:73
 msgid "Must be empty"
 msgstr "Должно быть пустым"
 
-#: vdate/rule/_base.py:82
+#: vdate/rule/base.py:84
 msgid "Cannot be empty"
 msgstr "Не может быть пустым"
 
-#: vdate/rule/_length.py:31
+#: vdate/rule/base.py:101 vdate/rule/base.py:104
+msgid "Is too big"
+msgstr "Слишком большое"
+
+#: vdate/rule/base.py:107 vdate/rule/base.py:110
+msgid "Is too small"
+msgstr "Слишком маленькое"
+
+#: vdate/rule/base.py:113
+msgid "Not equals {}"
+msgstr "Не равно {}"
+
+#: vdate/rule/base.py:116
+msgid "Equals {}"
+msgstr "Не может быть равно {}"
+
+#: vdate/rule/length.py:35
 msgid "Length cannot be less than {}"
 msgstr "Не может иметь длину менее, чем {}"
 
-#: vdate/rule/_length.py:34
+#: vdate/rule/length.py:38
 msgid "Length cannot be greater than {}"
 msgstr "Не может иметь длину более, чем {}"
+
+#: vdate/rule/number.py:24
+msgid "Is not a number"
+msgstr "Не является числом"
+
+#: vdate/rule/number.py:35
+msgid "Is not an integer number"
+msgstr "Не является целым числом"
+
+#: vdate/rule/number.py:46
+msgid "Is not a float number"
+msgstr "Не является десятичным числом"
+
+#: vdate/rule/number.py:57
+msgid "Is not a decimal number"
+msgstr "Не является десятичным числом"
 

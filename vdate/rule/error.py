@@ -62,7 +62,7 @@ class IsNotIntegerError(NumberRuleError):
     """
 
 
-class IsNotDecimalError(NumberRuleError):
+class IsNotFloatError(NumberRuleError):
     """Is not a decimal number error
     """
 

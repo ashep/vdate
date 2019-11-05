@@ -11,7 +11,7 @@ from .error import TooShortError, TooLongError
 from .._gettext import _
 
 
-class LengthRule(Rule):
+class Length(Rule):
     """Length Rule
     """
 
@@ -38,7 +38,7 @@ class LengthRule(Rule):
             raise TooLongError(_('Length cannot be greater than {}').format(self._max_length), self._value)
 
 
-class MinLengthRule(LengthRule):
+class MinLength(Length):
     """Minimum Length Rule
     """
 
@@ -48,7 +48,7 @@ class MinLengthRule(LengthRule):
         super().__init__(min_length, value=value)
 
 
-class MaxLengthRule(LengthRule):
+class MaxLength(Length):
     """Maximum Length Rule
     """
 
