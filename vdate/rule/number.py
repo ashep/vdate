@@ -6,7 +6,7 @@ __license__ = 'MIT'
 
 from typing import Union, SupportsInt, SupportsFloat
 from decimal import Decimal
-from .error import IsNotNumberError, IsNotIntegerError, IsNotFloatError
+from .error import IsNotNumberError, IsNotIntegerError, IsNotFloatError, IsNotDecimalError
 from .._gettext import _
 from .base import Rule
 
@@ -54,4 +54,4 @@ class IsDecimal(IsNumber):
         """Validate the rule
         """
         if not isinstance(self._value, Decimal):
-            raise IsNotFloatError(_('Is not a decimal number'))
+            raise IsNotDecimalError(_('Is not a decimal number'))

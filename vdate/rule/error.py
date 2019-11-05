@@ -36,54 +36,64 @@ class RuleError(Exception):
 
 
 class IsEmptyError(RuleError):
-    """Empty error
+    """Empty
     """
     pass
 
 
 class IsNotEmptyError(RuleError):
-    """Not empty error
+    """Not empty
     """
     pass
 
 
-class NumberRuleError(RuleError):
-    """Number rule error
+class IsNotLess(RuleError):
+    """Is not less than
     """
 
 
-class IsNotNumberError(NumberRuleError):
-    """Is not a number error
+class IsNotLessOrEquals(RuleError):
+    """Is not less or equals
     """
 
 
-class IsNotIntegerError(NumberRuleError):
-    """Is not an integer number error
+class IsNotGreater(RuleError):
+    """Is not greater than
     """
 
 
-class IsNotFloatError(NumberRuleError):
-    """Is not a decimal number error
-    """
-
-
-class TooSmallError(RuleError):
-    """Too small number error
-    """
-
-
-class TooBigError(RuleError):
-    """Too big number error
+class IsNotGreaterOrEquals(RuleError):
+    """Is not greater or equals
     """
 
 
 class EqualsError(RuleError):
-    """Equals error
+    """Equals
     """
 
 
 class NotEqualsError(RuleError):
-    """Not equals error
+    """Not equals
+    """
+
+
+class IsNotNumberError(RuleError):
+    """Is not a number error
+    """
+
+
+class IsNotIntegerError(IsNotNumberError):
+    """Is not an integer number error
+    """
+
+
+class IsNotFloatError(IsNotNumberError):
+    """Is not a float number error
+    """
+
+
+class IsNotDecimalError(IsNotNumberError):
+    """Is not a decimal number error
     """
 
 

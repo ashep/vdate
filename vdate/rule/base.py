@@ -7,7 +7,7 @@ __license__ = 'MIT'
 from typing import Any
 from abc import ABC, abstractmethod
 from .._gettext import _
-from .error import IsEmptyError, IsNotEmptyError, NotEqualsError, EqualsError, TooBigError, TooSmallError
+from .error import IsEmptyError, IsNotEmptyError
 
 _EMPTY_OBJECTS = (None, '', [], {}, set(), tuple())
 
@@ -82,57 +82,3 @@ class IsNotEmpty(Rule):
         """
         if self._value in _EMPTY_OBJECTS:
             raise IsEmptyError(_('Cannot be empty'), self._value)
-
-
-class Compare(Rule):
-    def __init__(self, cmp_op: str, compare_to: Any, value: Any = None):
-        """Init
-        """
-        super().__init__(value)
-
-        self._cmp_op = cmp_op
-        self._compare_to = compare_to
-
-    def validate(self):
-        """Validate the rule
-        """
-        if self._cmp_op == '<':
-            if self._value >= self._compare_to:
-                raise TooBigError(_('Is too big'))
-        elif self._cmp_op == '<=':
-            if self._value > self._compare_to:
-                raise TooBigError(_('Is too big'))
-        elif self._cmp_op == '>':
-            if self._value <= self._compare_to:
-                raise TooSmallError(_('Is too small'))
-        elif self._cmp_op == '>=':
-            if self._value < self._compare_to:
-                raise TooSmallError(_('Is too small'))
-        elif self._cmp_op == '==':
-            if self._value != self._compare_to:
-                raise NotEqualsError(_('Not equals {}').format(repr(self._compare_to)))
-        elif self._cmp_op == '!=':
-            if self._value == self._compare_to:
-                raise EqualsError(_('Equals {}').format(repr(self._compare_to)))
-        else:
-            raise ValueError('Unknown comparing operator: {}'.format(self._cmp_op))
-
-
-class Equals(Compare):
-    """Equals rule
-    """
-
-    def __init__(self, compare_to: Any, value: Any = None):
-        """Init
-        """
-        super().__init__('==', compare_to, value)
-
-
-class NotEquals(Compare):
-    """Not equals rule
-    """
-
-    def __init__(self, compare_to: Any, value: Any = None):
-        """Init
-        """
-        super().__init__('!=', compare_to, value)

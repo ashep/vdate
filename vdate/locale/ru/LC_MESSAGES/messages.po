@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  vdate-0.0.1\n"
 "Report-Msgid-Bugs-To: a@shepetko.com\n"
-"POT-Creation-Date: 2019-11-05 23:10+0200\n"
+"POT-Creation-Date: 2019-11-06 00:53+0200\n"
 "PO-Revision-Date: 2019-10-18 00:49+0300\n"
 "Last-Translator: Oleksandr Shepetko <a@shepetko.com>\n"
 "Language: ru\n"
@@ -27,21 +27,29 @@ msgstr "Должно быть пустым"
 msgid "Cannot be empty"
 msgstr "Не может быть пустым"
 
-#: vdate/rule/base.py:101 vdate/rule/base.py:104
-msgid "Is too big"
-msgstr "Слишком большое"
+#: vdate/rule/compare.py:37
+msgid "Must be less than {}"
+msgstr "Должно быть меньше {}"
 
-#: vdate/rule/base.py:107 vdate/rule/base.py:110
-msgid "Is too small"
-msgstr "Слишком маленькое"
+#: vdate/rule/compare.py:40
+msgid "Must be less or equal to {}"
+msgstr "Должно быть меньше или равно {}"
 
-#: vdate/rule/base.py:113
-msgid "Not equals {}"
-msgstr "Не равно {}"
+#: vdate/rule/compare.py:43
+msgid "Must be greater than {}"
+msgstr "Должно быть больше {}"
 
-#: vdate/rule/base.py:116
-msgid "Equals {}"
-msgstr "Не может быть равно {}"
+#: vdate/rule/compare.py:46
+msgid "Must be greater or equal to {}"
+msgstr "Должно быть больше или равно {}"
+
+#: vdate/rule/compare.py:49
+msgid "Must be equal to {}"
+msgstr "Должно быть равно {}"
+
+#: vdate/rule/compare.py:52
+msgid "Must not be equal to {}"
+msgstr "Не должно быть равно {}"
 
 #: vdate/rule/length.py:35
 msgid "Length cannot be less than {}"

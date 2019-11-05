@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the vdate project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: vdate 0.0.1\n"
 "Report-Msgid-Bugs-To: a@shepetko.com\n"
-"POT-Creation-Date: 2019-11-05 23:10+0200\n"
+"POT-Creation-Date: 2019-11-06 00:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,20 +24,28 @@ msgstr ""
 msgid "Cannot be empty"
 msgstr ""
 
-#: vdate/rule/base.py:101 vdate/rule/base.py:104
-msgid "Is too big"
+#: vdate/rule/compare.py:37
+msgid "Must be less than {}"
 msgstr ""
 
-#: vdate/rule/base.py:107 vdate/rule/base.py:110
-msgid "Is too small"
+#: vdate/rule/compare.py:40
+msgid "Must be less or equal to {}"
 msgstr ""
 
-#: vdate/rule/base.py:113
-msgid "Not equals {}"
+#: vdate/rule/compare.py:43
+msgid "Must be greater than {}"
 msgstr ""
 
-#: vdate/rule/base.py:116
-msgid "Equals {}"
+#: vdate/rule/compare.py:46
+msgid "Must be greater or equal to {}"
+msgstr ""
+
+#: vdate/rule/compare.py:49
+msgid "Must be equal to {}"
+msgstr ""
+
+#: vdate/rule/compare.py:52
+msgid "Must not be equal to {}"
 msgstr ""
 
 #: vdate/rule/length.py:35
