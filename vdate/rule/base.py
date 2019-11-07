@@ -7,7 +7,7 @@ __license__ = 'MIT'
 from typing import Any
 from abc import ABC, abstractmethod
 from .._gettext import _
-from .error import IsEmptyError, IsNotEmptyError
+from .error import EmptyError, NotEmptyError
 
 _EMPTY_OBJECTS = (None, '', [], {}, set(), tuple())
 
@@ -70,7 +70,7 @@ class IsEmpty(Rule):
         """Validate the rule
         """
         if self._value not in _EMPTY_OBJECTS:
-            raise IsNotEmptyError(_('Must be empty'), self._value)
+            raise NotEmptyError(_('Must be empty'), self._value)
 
 
 class IsNotEmpty(Rule):
@@ -81,4 +81,4 @@ class IsNotEmpty(Rule):
         """Validate the rule
         """
         if self._value in _EMPTY_OBJECTS:
-            raise IsEmptyError(_('Cannot be empty'), self._value)
+            raise EmptyError(_('Cannot be empty'), self._value)

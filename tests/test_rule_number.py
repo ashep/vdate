@@ -5,7 +5,7 @@ __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
 
 import pytest
-from vdate.rule.error import IsNotNumberError, IsNotIntegerError, IsNotFloatError, IsNotDecimalError
+from vdate.rule.error import NotNumberError, NotIntegerError, NotFloatError, NotDecimalError
 from vdate.rule.number import IsNumber, IsInteger, IsFloat, IsDecimal
 from .base import BaseTest
 
@@ -17,20 +17,20 @@ class TestRuleNumber(BaseTest):
 
     def test_number(self):
         for v in self._not_numbers:
-            with pytest.raises(IsNotNumberError):
+            with pytest.raises(NotNumberError):
                 IsNumber(v).validate()
 
     def test_integer(self):
         for v in self._not_numbers:
-            with pytest.raises(IsNotIntegerError):
+            with pytest.raises(NotIntegerError):
                 IsInteger(v).validate()
 
     def test_float(self):
         for v in self._not_numbers:
-            with pytest.raises(IsNotFloatError):
+            with pytest.raises(NotFloatError):
                 IsFloat(v).validate()
 
     def test_decimal(self):
         for v in self._not_numbers:
-            with pytest.raises(IsNotDecimalError):
+            with pytest.raises(NotDecimalError):
                 IsDecimal(v).validate()

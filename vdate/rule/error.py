@@ -35,34 +35,34 @@ class RuleError(Exception):
         return self._rule_value
 
 
-class IsEmptyError(RuleError):
+class EmptyError(RuleError):
     """Empty
     """
     pass
 
 
-class IsNotEmptyError(RuleError):
+class NotEmptyError(RuleError):
     """Not empty
     """
     pass
 
 
-class IsNotLess(RuleError):
+class NotLessError(RuleError):
     """Is not less than
     """
 
 
-class IsNotLessOrEquals(RuleError):
+class NotLessOrEqualsError(RuleError):
     """Is not less or equals
     """
 
 
-class IsNotGreater(RuleError):
+class NotGreaterError(RuleError):
     """Is not greater than
     """
 
 
-class IsNotGreaterOrEquals(RuleError):
+class NotGreaterOrEqualsError(RuleError):
     """Is not greater or equals
     """
 
@@ -77,22 +77,22 @@ class NotEqualsError(RuleError):
     """
 
 
-class IsNotNumberError(RuleError):
+class NotNumberError(RuleError):
     """Is not a number error
     """
 
 
-class IsNotIntegerError(IsNotNumberError):
+class NotIntegerError(NotNumberError):
     """Is not an integer number error
     """
 
 
-class IsNotFloatError(IsNotNumberError):
+class NotFloatError(NotNumberError):
     """Is not a float number error
     """
 
 
-class IsNotDecimalError(IsNotNumberError):
+class NotDecimalError(NotNumberError):
     """Is not a decimal number error
     """
 

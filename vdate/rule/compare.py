@@ -8,7 +8,7 @@ from typing import Any
 from enum import Enum
 from .._gettext import _
 from .base import Rule
-from .error import IsNotLess, IsNotGreater, IsNotLessOrEquals, IsNotGreaterOrEquals, EqualsError, NotEqualsError
+from .error import NotLessError, NotGreaterError, NotLessOrEqualsError, NotGreaterOrEqualsError, EqualsError, NotEqualsError
 
 
 class CompareOperator(Enum):
@@ -39,16 +39,16 @@ class Compare(Rule):
         """
         if self._cmp_op == CompareOperator.LT:
             if self._value >= self._compare_to:
-                raise IsNotLess(_('Must be less than {}').format(self._compare_to))
+                raise NotLessError(_('Must be less than {}').format(self._compare_to))
         elif self._cmp_op == CompareOperator.LTE:
             if self._value > self._compare_to:
-                raise IsNotLessOrEquals(_('Must be less or equal to {}').format(self._compare_to))
+                raise NotLessOrEqualsError(_('Must be less or equal to {}').format(self._compare_to))
         elif self._cmp_op == CompareOperator.GT:
             if self._value <= self._compare_to:
-                raise IsNotGreater(_('Must be greater than {}').format(self._compare_to))
+                raise NotGreaterError(_('Must be greater than {}').format(self._compare_to))
         elif self._cmp_op == CompareOperator.GTE:
             if self._value < self._compare_to:
-                raise IsNotGreaterOrEquals(_('Must be greater or equal to {}').format(self._compare_to))
+                raise NotGreaterOrEqualsError(_('Must be greater or equal to {}').format(self._compare_to))
         elif self._cmp_op == CompareOperator.EQ:
             if self._value != self._compare_to:
                 raise NotEqualsError(_('Must be equal to {}').format(repr(self._compare_to)))

@@ -5,8 +5,8 @@ __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
 
 import pytest
-from vdate.rule.base import Rule, Pass, IsEmpty, IsNotEmpty
-from vdate.rule.base import IsEmptyError, IsNotEmptyError
+from vdate.rule.base import Rule, Pass, IsEmpty, IsNotEmpty, EmptyError, NotEmptyError
+from vdate.rule.error import RuleError
 from .base import BaseTest
 
 
@@ -17,6 +17,14 @@ class TestRuleBase(BaseTest):
     def test_base(self):
         with pytest.raises(TypeError):
             Rule()
+
+    def test_base_error(self):
+        msg = self.rand_str()
+        v = self.rand_str()
+        e = RuleError(msg, v)
+
+        assert str(e) == e.msg
+        assert e.rule_value == v
 
     def test_value(self):
         r = Pass()
@@ -39,7 +47,7 @@ class TestRuleBase(BaseTest):
             r.set_value(v).validate()
 
         for v in (0, 0.0, False):
-            with pytest.raises(IsNotEmptyError):
+            with pytest.raises(NotEmptyError):
                 r.set_value(v).validate()
 
     def test_non_empty(self):
@@ -49,5 +57,5 @@ class TestRuleBase(BaseTest):
             r.set_value(v).validate()
 
         for v in (None, '', [], {}, set(), tuple()):
-            with pytest.raises(IsEmptyError):
+            with pytest.raises(EmptyError):
                 r.set_value(v).validate()

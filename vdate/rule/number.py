@@ -6,7 +6,7 @@ __license__ = 'MIT'
 
 from typing import Union, SupportsInt, SupportsFloat
 from decimal import Decimal
-from .error import IsNotNumberError, IsNotIntegerError, IsNotFloatError, IsNotDecimalError
+from .error import NotNumberError, NotIntegerError, NotFloatError, NotDecimalError
 from .._gettext import _
 from .base import Rule
 
@@ -21,7 +21,7 @@ class IsNumber(Rule):
         """Validate the rule
         """
         if not any([hasattr(self._value, m) for m in ('__int__', '__float__')]):
-            raise IsNotNumberError(_('Is not a number'), self._value)
+            raise NotNumberError(_('Is not a number'), self._value)
 
 
 class IsInteger(IsNumber):
@@ -32,7 +32,7 @@ class IsInteger(IsNumber):
         """Validate the rule
         """
         if not hasattr(self._value, '__int__'):
-            raise IsNotIntegerError(_('Is not an integer number'))
+            raise NotIntegerError(_('Is not an integer number'))
 
 
 class IsFloat(IsNumber):
@@ -43,7 +43,7 @@ class IsFloat(IsNumber):
         """Validate the rule
         """
         if not hasattr(self._value, '__float__'):
-            raise IsNotFloatError(_('Is not a float number'))
+            raise NotFloatError(_('Is not a float number'))
 
 
 class IsDecimal(IsNumber):
@@ -54,4 +54,4 @@ class IsDecimal(IsNumber):
         """Validate the rule
         """
         if not isinstance(self._value, Decimal):
-            raise IsNotDecimalError(_('Is not a decimal number'))
+            raise NotDecimalError(_('Is not a decimal number'))
